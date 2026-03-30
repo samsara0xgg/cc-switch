@@ -13,7 +13,7 @@ OFFICIAL_BASE_URL = "https://api.anthropic.com"
 # Default env settings to preserve
 DEFAULT_ENV_SETTINGS = {
     "ANTHROPIC_SMALL_FAST_MODEL": "claude-haiku-4-5-20251001",
-    "ANTHROPIC_MODEL": "claude-sonnet-4-6",
+    "ANTHROPIC_MODEL": "claude-opus-4-6",
     "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "80",
     "CLAUDE_CODE_MAX_TOOL_USE_TOKENS": "30000"
 }
@@ -142,6 +142,9 @@ def apply_key(settings, name, info):
     for key in API_REMOVE_SETTINGS.get(name, []):
         settings["env"].pop(key, None)
 
+    # Set effort level
+    settings["effortLevel"] = "high"
+
     # Set token and URL
     settings["env"]["ANTHROPIC_AUTH_TOKEN"] = info["key"]
 
@@ -211,6 +214,9 @@ def switch_to_official(settings):
     # Preserve default optimization settings
     for key, value in DEFAULT_ENV_SETTINGS.items():
         settings["env"][key] = value
+
+    # Set effort level
+    settings["effortLevel"] = "high"
 
     # Remove auth and proxy settings
     settings["env"].pop("ANTHROPIC_AUTH_TOKEN", None)
