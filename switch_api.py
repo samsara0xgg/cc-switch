@@ -13,7 +13,7 @@ OFFICIAL_BASE_URL = "https://api.anthropic.com"
 # Default env settings to preserve
 DEFAULT_ENV_SETTINGS = {
     "ANTHROPIC_SMALL_FAST_MODEL": "claude-haiku-4-5-20251001",
-    "ANTHROPIC_MODEL": "claude-opus-4-6",
+    "ANTHROPIC_MODEL": "claude-opus-4-6[1m]",
     "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "80",
     "CLAUDE_CODE_MAX_TOOL_USE_TOKENS": "30000"
 }
